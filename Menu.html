@@ -45,37 +45,130 @@
         .menu-item p {
             font-size: 0.9em;
         }
+        /* Add styles for the supplies section */
+        .supplies-section {
+            margin-top: 40px;
+            background-color: #FFF9C4;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #FFD54F;
+        }
+        th {
+            background-color: #FFB300;
+            color: #000;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+            color: #666;
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <a href="polloshermanoswebsite.html" class="home-link">Return to Home</a>
-        <h1>Los Pollos Hermanos Menu</h1>
+        <h1>Los Pollos Hermanos Menu and Supplies</h1>
         <p>Our items are sourced from our very own chicken farm outside of ABQ--Free range, free of any chemicals or preservatives.</p>
     </header>
 
-    <main class="menu-grid">
-        <article class="menu-item">
-            <img src="los_pollos_hermanos.menu.pic.1.jpg" alt="French Fries and Curly Fries">
-            <h3>French Fries/Curly Fries</h3>
-            <p>A la carte - $2.50</p>
-            <p>Add-on: Blue Sky - $1.00</p>
-        </article>
+    <main>
+        <section class="menu-grid">
+            <!-- ... (keep your existing menu items) ... -->
+        </section>
 
-        <article class="menu-item">
-            <img src="los_pollos_hermanos.menu.pic.2.jpeg" alt="Hermanos Burger">
-            <h3>Hermanos Burger</h3>
-            <p>A la carte - $3.79</p>
-            <p>Combo - $5.99</p>
-        </article>
-
-        <article class="menu-item">
-            <img src="polloshermanoschickenburrito.jfif" alt="New Mexico Chicken Burrito">
-            <h3>New Mexico Chicken Burrito</h3>
-            <p>A la Carte $3.00</p>
-            <p>Combo: $6.00</p>
-            <p>Add-on: Chilli P - $4.00</p>
-        </article>
+        <section class="supplies-section">
+            <h2>Supplies Inventory</h2>
+            <div id="goodsTable" class="loading">Loading goods data...</div>
+            
+            <h2>Suppliers</h2>
+            <div id="suppliersTable" class="loading">Loading suppliers data...</div>
+        </section>
     </main>
+
+    <script>
+        // Existing menu-related JavaScript (if any)
+
+        // Add the following code for fetching and displaying supplies data
+        async function fetchData() {
+            try {
+                const response = await fetch('fetchGoods.js');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                displayGoods(data.goods);
+                displaySuppliers(data.suppliers);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                document.getElementById('goodsTable').innerHTML = "Error loading goods data.";
+                document.getElementById('suppliersTable').innerHTML = "Error loading suppliers data.";
+            }
+        }
+
+        function displayGoods(goods) {
+            const tableHtml = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${goods.map(good => `
+                            <tr>
+                                <td>${good.ID}</td>
+                                <td>${good.Name}</td>
+                                <td>${good.Category}</td>
+                                <td>$${good.Price}</td>
+                                <td>${good.StockQuantity}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            document.getElementById('goodsTable').innerHTML = tableHtml;
+        }
+
+        function displaySuppliers(suppliers) {
+            const tableHtml = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Supplier ID</th>
+                            <th>Supplier Name</th>
+                            <th>Contact Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${suppliers.map(supplier => `
+                            <tr>
+                                <td>${supplier.SupplierID}</td>
+                                <td>${supplier.SupplierName}</td>
+                                <td>${supplier.ContactNumber}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            document.getElementById('suppliersTable').innerHTML = tableHtml;
+        }
+
+        // Fetch data when the page loads
+        fetchData();
+    </script>
 </body>
 </html>
