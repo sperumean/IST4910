@@ -15,3 +15,27 @@ CREATE TABLE Suppliers (
 SHOW TABLES;
 DESCRIBE Goods;
 DESCRIBE Suppliers;
+
+
+INSERT INTO Goods (ID, Name, Category, Price, StockQuantity) VALUES
+(1, 'Methylamine', 'Chemicals', 5000.00, 10),
+(2, 'Hydrofluoric Acid', 'Chemicals', 2000.00, 5),
+(3, 'Phenylacetone', 'Chemicals', 7500.00, 3),
+(4, 'Acetone', 'Chemicals', 50.00, 100),
+(5, 'Sulfuric Acid', 'Chemicals', 100.00, 80),
+(6, 'Portable Lab Burner', 'Equipment', 300.00, 15),
+(7, 'Glass Beakers Set', 'Equipment', 150.00, 50),
+(8, 'Distillation Kit', 'Equipment', 800.00, 5),
+(9, 'Pressure Cooker', 'Equipment', 120.00, 20),
+(10, 'Digital Scale', 'Equipment', 250.00, 10),
+(11, 'Hazmat Suit', 'Protective Gear', 350.00, 20),
+(12, 'Respirator Mask', 'Protective Gear', 80.00, 30),
+(13, 'Nitrile Gloves', 'Protective Gear', 10.00, 200),
+(14, 'Safety Goggles', 'Protective Gear', 15.00, 100),
+(15, 'Chemical Resistant Boots', 'Protective Gear', 70.00, 25);
+
+INSERT INTO Suppliers (SupplierID, SupplierName, ContactNumber) VALUES
+(1, 'Los Pollos Supplies', '555-1234'),
+(2, 'Gray Matter Chemicals', '555-5678'),
+(3, 'Saul Goodman Importers', '555-4321'),
+(4, 'Vamonos Pest Equipment', '555-8765');
