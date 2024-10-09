@@ -1,0 +1,17 @@
+CREATE TABLE Goods (
+  ID int(11) NOT NULL AUTO_INCREMENT,
+  Name varchar(100) NOT NULL,
+  Category varchar(50) NOT NULL,
+  Price decimal(10,2) NOT NULL,
+  StockQuantity int(11) NOT NULL,
+  PRIMARY KEY (ID)
+);
+CREATE TABLE Suppliers (
+  SupplierID int(11) NOT NULL AUTO_INCREMENT,
+  SupplierName varchar(100) NOT NULL,
+  ContactNumber varchar(20),
+  PRIMARY KEY (SupplierID)
+);
+SHOW TABLES;
+DESCRIBE Goods;
+DESCRIBE Suppliers;
