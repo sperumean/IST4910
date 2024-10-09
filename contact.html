@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact US</title>
+    <a href="polloshermanoswebsite.html" style="font-size: xx-large;">Return to Home</a>
+</head>
+<body style="background-color: yellow;">
+    <p style="font-size: xx-large;color: red;"><strong>Please feel free to contact us, we wouldn't want to keep you waiting.</strong></p>
+    <br><br>
+    <div class="container">
+        <form action="action_page.php" method="post">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+            <br><br>
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+            <br><br>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="whatthesigma@example.com" style="width: 200px;" required>
+            <br><br>
+            <label for="Services">Services</label>
+            <select id="Service" name="Service">
+                <option value="Customer Service">Customer Service</option>
+                <option value="Saul Goodman">Saul Goodman</option>
+                <option value="Walt & Jesse">Walt & Jesse</option>
+                <option value="Madrigal">Madrigal Industries</option>
+            </select>
+            <br><br>
+            <label for="country">Country</label>
+            <select id="country" name="country">
+                <option value="USA">USA</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Belize">Belize</option>
+                <option value="Czech Republic">Czech Republic</option>
+            </select>
+            <br><br>
+            <label for="subject">Subject</label>
+            <br>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px;width: 600px;"></textarea>
+            <br>
+            <input type="reset" value="Reset">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
