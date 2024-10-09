@@ -15,14 +15,10 @@ db_connection = mysql.connector.connect(
     password="W00fW00f#!?",
     database="WALTER"
 )
-
 cursor = db_connection.cursor(dictionary=True)
 
 # Query to fetch all goods
 cursor.execute("SELECT * FROM Goods")
-
-
-
 goods = cursor.fetchall()
 
 # Query to fetch all suppliers
@@ -38,7 +34,7 @@ def convert_decimal(data):
     elif isinstance(data, Decimal):
         return float(data)
     else:
-	return data
+        return data
 
 # Convert Decimal values to float
 goods = convert_decimal(goods)
