@@ -21,11 +21,16 @@
             color: #D50000;
             text-decoration: none;
         }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             justify-items: center;
+            margin-bottom: 40px;
         }
         .menu-item {
             background-color: #FFF9C4;
@@ -36,7 +41,8 @@
         }
         .menu-item img {
             max-width: 100%;
-            height: auto;
+            height: 200px;
+            object-fit: cover;
             border-radius: 8px;
         }
         .menu-item h3 {
@@ -46,7 +52,6 @@
             font-size: 0.9em;
         }
         .supplies-section {
-            margin-top: 40px;
             background-color: #FFF9C4;
             border-radius: 8px;
             padding: 20px;
@@ -76,13 +81,32 @@
 <body>
     <header class="header">
         <a href="polloshermanoswebsite.html" class="home-link">Return to Home</a>
+        <img src="https://upload.wikimedia.org/wikipedia/ru/6/67/Los_Pollos_Hermanos.png" alt="Los Pollos Hermanos Logo" class="logo">
         <h1>Los Pollos Hermanos Menu and Supplies</h1>
         <p>Our items are sourced from our very own chicken farm outside of ABQ--Free range, free of any chemicals or preservatives.</p>
     </header>
 
     <main>
         <section class="menu-grid">
-            <!-- Add your existing menu items here -->
+            <article class="menu-item">
+                <img src="los_pollos_hermanos.menu.pic.1.jpg" alt="French Fries and Curly Fries">
+                <h3>French Fries/Curly Fries</h3>
+                <p>A la carte - $2.50</p>
+                <p>Add-on: Blue Sky - $1.00</p>
+            </article>
+            <article class="menu-item">
+                <img src="los_pollos_hermanos.menu.pic.2.jpeg" alt="Hermanos Burger">
+                <h3>Hermanos Burger</h3>
+                <p>A la carte - $3.79</p>
+                <p>Combo - $5.99</p>
+            </article>
+            <article class="menu-item">
+                <img src="polloshermanoschickenburrito.jfif" alt="New Mexico Chicken Burrito">
+                <h3>New Mexico Chicken Burrito</h3>
+                <p>A la Carte $3.00</p>
+                <p>Combo: $6.00</p>
+                <p>Add-on: Chilli P - $4.00</p>
+            </article>
         </section>
 
         <section class="supplies-section">
@@ -172,7 +196,5 @@
         // Fetch data when the page loads
         fetchData();
     </script>
-</body>
-</html>
 </body>
 </html>
