@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Los Pollos Hermanos Menu</title>
+    <title>Los Pollos Hermanos Menu and Supplies</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,7 +45,6 @@
         .menu-item p {
             font-size: 0.9em;
         }
-        /* Add styles for the supplies section */
         .supplies-section {
             margin-top: 40px;
             background-color: #FFF9C4;
@@ -83,7 +82,7 @@
 
     <main>
         <section class="menu-grid">
-            <!-- ... (keep your existing menu items) ... -->
+            <!-- Add your existing menu items here -->
         </section>
 
         <section class="supplies-section">
@@ -96,22 +95,25 @@
     </main>
 
     <script>
-        // Existing menu-related JavaScript (if any)
-
-        // Add the following code for fetching and displaying supplies data
         async function fetchData() {
             try {
                 const response = await fetch('fetchGoods.js');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                const data = await response.json();
+                const text = await response.text();
+                // Extract the data object from the response
+                const dataMatch = text.match(/const data = ({[\s\S]*?});/);
+                if (!dataMatch) {
+                    throw new Error('Data not found in the response');
+                }
+                const data = JSON.parse(dataMatch[1]);
                 displayGoods(data.goods);
                 displaySuppliers(data.suppliers);
             } catch (error) {
                 console.error("Error fetching data:", error);
-                document.getElementById('goodsTable').innerHTML = "Error loading goods data.";
-                document.getElementById('suppliersTable').innerHTML = "Error loading suppliers data.";
+                document.getElementById('goodsTable').innerHTML = "Error loading goods data: " + error.message;
+                document.getElementById('suppliersTable').innerHTML = "Error loading suppliers data: " + error.message;
             }
         }
 
@@ -133,7 +135,7 @@
                                 <td>${good.ID}</td>
                                 <td>${good.Name}</td>
                                 <td>${good.Category}</td>
-                                <td>$${good.Price}</td>
+                                <td>$${good.Price.toFixed(2)}</td>
                                 <td>${good.StockQuantity}</td>
                             </tr>
                         `).join('')}
@@ -170,5 +172,7 @@
         // Fetch data when the page loads
         fetchData();
     </script>
+</body>
+</html>
 </body>
 </html>
